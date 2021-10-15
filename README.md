@@ -1,2 +1,2 @@
 # ITProject
-- [Project URL](http://widit.knu.ac.kr/~f2921641/project/) 
+- [Project URL](http://widit.knu.ac.kr/~f2921641/project/ITProject) 
