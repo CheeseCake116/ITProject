@@ -24,7 +24,6 @@ a {
 .container {
 	width:1440px;
 	margin:0 auto;
-	background-color: #1C2659;
 }
 
 header {
@@ -33,6 +32,11 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	background-color: #1C2659;
+}
+
+section p {
+    color: #ffffff;
 }
 
 header > h2 {
