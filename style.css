@@ -45,7 +45,7 @@ header > nav {
 }
 
 header ul {
-	width:100%;
+	width:80%;
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -62,3 +62,4 @@ header ul > li {
 header a {
     color: #ffffff;
 }
+
