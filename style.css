@@ -35,8 +35,16 @@ header {
 	background-color: #1C2659;
 }
 
+section * {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
 section p {
     color: #ffffff;
+}
+
+article p {
+    color: #000000;
 }
 
 header > h2 {
