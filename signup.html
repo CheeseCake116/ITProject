@@ -6,23 +6,30 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
+<style>
+	section {
+		background-image: url(images/signup_image_2.png);
+        background-size: auto 100%;
+		background-repeat: no-repeat;
+        background-position: center;
+        width: 100%;
+        height: 1200px;
+        text-align: center;
+	}
+    .loginDiv {
+        width: 100%;
+        height: 100%;
+        padding: 150px 0px;
+    }
+    table {
+        margin: auto;
+    }
+</style>
 <body>
-</form>
-<div class="container">
-    <header>
-        <h2><a href="index.html">Disney Movies</a></h2>
-        <nav>
-            <ul style="width: 50%">
-                <li><a href="signin.html">Sign in</a></li>
-                <li><a href="signup.html">Sign up</a></li>
-            </ul>
-        </nav>
-    </header>
     <section>
-        <div style="position: absolute; top:300px; left:50%; transform:translate(-50%, 0%); font-size: 1.5em;">
-            <h3 class="fn-font" align="center">회원가입</h3>
-            <br><br>
-            <form action="index.html" method="post">
+        <div class="loginDiv" style="font-size: 1.5em; display: block;">
+            <h3 class="fn-font" style="margin: 50px 0px;">회원가입</h3>
+            <form action="disney.html" method="post">
                 <table cellspacing="10px">
                     <tr>
                         <td>
@@ -49,13 +56,11 @@
                         </td>
                     </tr>
                 </table>
-                <div align="center">
+                <div>
                     <input type="submit" value="제출" style="width: 300px; height: 30px;" align="center"/>
                 </div>
             </form>
         </div>
-        <img src="images/signup_image.png" width="1440px"/>
     </section>
-</div>
 </body>
 </html>

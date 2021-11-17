@@ -2,34 +2,29 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>디즈니 영화</title>
+    <title>Disney Movies</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
+<style>
+	iframe {
+		width: 100%;
+	}
+</style>
 <body>
-</form>
 <div class="container">
     <header>
-        <h2><a href="index.html">Disney Movies</a></h2>
-        <nav>
-            <ul style="width: 50%; float : right; margin-right : 20px;">
-                <li><a href="signin.html">Sign in</a></li>
-                <li><a href="signup.html">Sign up</a></li>
-                <li><a href="aboutUs.html">About Us</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section>
-        <div style="position: absolute; top:300px; left:50%; transform:translate(-50%, -50%); font-size: 1.5em;">
-            <p class="fn-font">디즈니, 픽사, 마블의 영화를 확인해보세요.</p>
-        </div>
-        <div style="position: absolute; top:450px; left:50%; transform:translate(-50%, -50%);">
-            <a href="main.html">
-                <img src="images/mainButton.png" width="190"/>
-            </a>
-        </div>
-        <img src="images/mainImage2.png" width="1440px"/>
-    </section>
+		<h2><a href="disney.html" target="movieContent">Disney Movies</a></h2>
+		<nav>
+			<ul>
+				<li><a href="disney.html" target="movieContent">Disney</a></li>
+				<li><a href="pixar.html" target="movieContent">Pixar</a></li>
+				<li><a href="marvel.html" target="movieContent">Marvel</a></li>
+			</ul>
+		</nav>
+        <a href="signin.html" target="movieContent"><img src="images/mypage_1.png" height="40px" style="padding: 0px 20px;"></a>
+	</header>
+	<iframe name="movieContent" src="disney.html" width="1920px" height="1200px" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
 </div>
 </body>
 </html>

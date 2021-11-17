@@ -6,49 +6,57 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
+<style>
+	section {
+		background-image: url(images/mainImage4_1.png);
+		background-repeat: no-repeat;
+        background-position: 50% 0%;
+		width: 100%;
+	}
+</style>
 <body>
-<div class="container">
 
 	<!--헤더이미지 최신상영작-->
     <section>
-		<div style="position: absolute; top:200px; left:25%; transform:translate(-50%, -50%); font-size: 1.5em;">
-			<p style="text-align: center; font-size: 1.5em">
-				픽사<br/>최신상영작
-			</p>
+		<div style="font-size: 1.5em; width: 100%; display: flex;">
+			<div style="width: 50%;">
+				<p style="text-align: center; font-size: 1.5em; padding: 150px 0px ;">
+					픽사<br/>최신상영작
+				</p>
+			</div>
+			<div style="width: 50%;">
+				<table cellspacing="20">
+					<tr>
+						<td>
+							<a href="pixar_detail.html"><img src="images/pixar_ruka.jpg" width="200"/></a>
+						</td>
+						<td>
+							<img src="images/pixar_soul.jpg" width="200"/>
+						</td>
+						<td>
+							<img src="images/pixar_onward.jpg" width="200"/>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<p style="font-size: 1.0em;">
+								루카
+							</p>
+						</th>
+						<th>
+							<p tyle="font-size: 1.0em;">
+								소울
+							</p>
+						</th>
+						<th>
+							<p style="font-size: 1.0em;">
+								온워드
+							</p>
+						</th>
+					</tr>
+				</table>
+			</div>
 		</div>
-        <div style="position: absolute; top:220px; left:70%; transform:translate(-50%, -50%); font-size: 1.5em;">
-            <table cellspacing="20">
-				<tr>
-					<td>
-						<a href="pixar_detail.html"><img src="images/pixar_ruka.jpg" width="200"/></a>
-					</td>
-					<td>
-						<img src="images/pixar_soul.jpg" width="200"/>
-					</td>
-					<td>
-						<img src="images/pixar_onward.jpg" width="200"/>
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<p style="font-size: 1.0em;">
-							루카
-						</p>
-					</th>
-					<th>
-						<p tyle="font-size: 1.0em;">
-							소울
-						</p>
-					</th>
-					<th>
-						<p style="font-size: 1.0em;">
-							온워드
-						</p>
-					</th>
-				</tr>
-			</table>
-        </div>
-        <img src="images/mainImage4.png" width="1440px"/>
 
 		<!--헤더이미지 아래 영화들 목록-->
 		<article>
@@ -83,6 +91,5 @@
 			</div>
 		</article>
     </section>
-</div>
 </body>
 </html>
