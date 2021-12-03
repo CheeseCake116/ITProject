@@ -29,8 +29,16 @@
     <section>
         <div class="loginDiv" style="font-size: 1.5em; display: block;">
             <h3 class="fn-font" style="margin: 50px 0px;">회원가입</h3>
-            <form action="disney.html" method="post">
+            <form action="signup.cgi" method="post">
                 <table cellspacing="10px">
+                    <tr>
+                        <td>
+                            <p class="fn-font">이름</p>
+                        </td>
+                        <td>
+                            <input type="text" name="username"/>
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                             <p class="fn-font">아이디</p>
@@ -57,7 +65,7 @@
                     </tr>
                 </table>
                 <div>
-                    <input type="submit" value="제출" style="width: 300px; height: 30px;" align="center"/>
+                    <input type="submit" value="제출" style="width: 300px; height: 30px;" text-align="center"/>
                 </div>
             </form>
         </div>
