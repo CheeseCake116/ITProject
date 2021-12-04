@@ -45,7 +45,7 @@ print<<EOP;
 <div class="container">
 	<a href="#" class="upbutton"></a>
     <header>
-		<h2><a href="disney.html" target="movieContent">Disney Movies</a></h2>
+		<h2><a href="homepage.html" target="movieContent">Disney Movies</a></h2>
 		<nav>
 			<ul>
 				<li><a href="homepage.html" target="movieContent">Home</a></li>
@@ -58,28 +58,11 @@ print<<EOP;
 		</nav>
 		<div class="profile">
         	<img src="images/mypage_1.png" height="40px" style="padding: 0px 20px;">
-
-EOP
-
-if (exists($account{$userid}) && $password eq $account{$userid}) {
-print<<EOP;
-<h2 id='username' class='fn-font'>$names{$userid}</h2>
-<a href='index.html' target='_parent' style='margin: auto 10px auto 0;'><p class='fn-font login-text'>로그아웃</p></a>
-</div>
-</header>
-<iframe id='child-iframe' name='movieContent' src='homepage.html' frameborder='0' scrolling='no'></iframe>
-EOP
-} elsif (!(exists($account{$userid}))) {
-	print "</div>";
-	print "</header>";
-	print "<iframe id='child-iframe' name='movieContent' src='signin_iderror.html' frameborder='0' scrolling='no'></iframe>";
-} else {
-	print "</div>";
-	print "</header>";
-	print "<iframe id='child-iframe' name='movieContent' src='signin_pwerror.html' frameborder='0' scrolling='no'></iframe>";
-}
-
-print<<EOP;
+			<h2 id='username' class='fn-font'>$names{$userid}</h2>
+			<a href='index.html' target='_parent' style='margin: auto 10px auto 0;'><p class='fn-font login-text'>로그아웃</p></a>
+		</div>
+	</header>
+	<iframe id='child-iframe' name='movieContent' src='homepage.html' frameborder='0' scrolling='no'></iframe>
 	<script>
 		let iframe = document.getElementById("child-iframe");
 		iframe.addEventListener('load', function() {

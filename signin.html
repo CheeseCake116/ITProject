@@ -31,30 +31,24 @@
     <section>
         <div class="loginDiv" style="font-size: 1.5em; display: block;">
             <h3 class="fn-font" style="margin: 50px 0px;">로그인</h3>
-            <form action="index.cgi" method=post target="_parent">
+            <form action="signin.cgi" method="post">
                 <table cellspacing="10px">
                     <tr>
                         <td>
-                            <p class="fn-font">아이디</p>
-                        </td>
-                        <td>
-                            <input type="text" name="userid"/>
+                            <input type="text" name="userid" placeholder="아이디" class="login-input"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <p class="fn-font">비밀번호</p>
-                        </td>
-                        <td>
-                            <input type="password" name="password"/>
+                            <input type="password" name="password" placeholder="비밀번호" class="login-input"/>
                         </td>
                     </tr>
                 </table>
                 <div>
-                    <input type="submit" value="로그인" style="width: 300px; height: 30px;"/>
+                    <input type="submit" value="로그인" class="login-button"/>
                 </div>
             </form>
-            <a href="signup.html"><button style="width: 300px; height: 30px;">회원가입</button></a>
+            <a href="signup.html"><button class="login-button">회원가입</button></a>
         </div>
     </section>
 </div>

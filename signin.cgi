@@ -3,10 +3,8 @@
 use CGI qw(:standard -debug);
 use CGI::Carp qw(fatalsToBrowser);
 
-$username = param("username");
 $userid = param("userid");
 $password = param("password");
-$passwordCF = param("passwordCF");
 
 $file = "account.out";
 open(IN, "$file") || die "can't read the $file";
@@ -16,11 +14,11 @@ $linecnt = @lines;
 %account = ();
 %names = ();
 for ($i=0; $i<$linecnt; $i+=3) {
-	$id = @lines[i];
+	$id = $lines[$i];
 	chomp $id;
-	$pwd = @lines[i+1];
+	$pwd = $lines[$i+1];
 	chomp $pwd;
-	$name = @lines[i+2];
+	$name = $lines[$i+2];
 	chomp $name;
 	$account{$id} = $pwd;
 	$names{$id} = $name;
@@ -57,31 +55,47 @@ print<<EOP;
 
 EOP
 
-if (!$username) {
-	print "<h3 class='board-text'>이름을 입력해 주세요.</h3>";
-	print "<a href='signup.html'><button class='login-button'>돌아가기</button></a>";
-} elsif (!$userid) {
+if (!$userid) {
 	print "<h3 class='board-text'>아이디를 입력해 주세요.</h3>";
-	print "<a href='signup.html'><button class='login-button'>돌아가기</button></a>";
+	print "<a href='signin.html'><button class='login-button'>돌아가기</button></a>";
 } elsif (!$password) {
 	print "<h3 class='board-text'>비밀번호를 입력해 주세요.</h3>";
-	print "<a href='signup.html'><button class='login-button'>돌아가기</button></a>";
-} elsif (!$passwordCF) {
-	print "<h3 class='board-text'>비밀번호 확인을 입력해 주세요.</h3>";
-	print "<a href='signup.html'><button class='login-button'>돌아가기</button></a>";
-} elsif (exists($account{$userid})) {
-	print "<h3 class='board-text'>이미 존재하는 아이디입니다.</h3>";
-	print "<a href='signup.html'><button class='login-button'>돌아가기</button></a>";
-} elsif ($password ne $passwordCF) {
+	print "<a href='signin.html'><button class='login-button'>돌아가기</button></a>";
+} elsif (!(exists($account{$userid}))) {
+	print "<h3 class='board-text'>존재하지 않는 아이디입니다.</h3>";
+	print "<a href='signin.html'><button class='login-button'>돌아가기</button></a>";
+} elsif ($password ne $account{$userid}) {
 	print "<h3 class='board-text'>비밀번호가 일치하지 않습니다.</h3>";
-	print "<a href='signup.html'><button class='login-button'>돌아가기</button></a>";
+	print "<a href='signin.html'><button class='login-button'>돌아가기</button></a>";
 } else {
-	open(OUT, ">>$file") || die "can't write to $file";
-	print OUT "$userid\n$password\n$username\n";
-	print "<h3 class='board-text'>회원가입을 축하드립니다!.</h3>";
-	print "<a href='signin.html'><button class='login-button'>로그인 화면으로</button></a>";
-}
+	print "<h3 class='board-text'>로그인 중...</h3>";
+print<<EOP;
+<script>
+	let f = document.createElement('form');
+    
+    let obj1;
+    obj1 = document.createElement('input');
+    obj1.setAttribute('type', 'hidden');
+    obj1.setAttribute('name', 'userid');
+    obj1.setAttribute('value', '$userid');
+	
+    let obj2;
+    obj2 = document.createElement('input');
+    obj2.setAttribute('type', 'hidden');
+    obj2.setAttribute('name', 'password');
+    obj2.setAttribute('value', '$password');
+    
+    f.appendChild(obj1);
+    f.appendChild(obj2);
+    f.setAttribute('method', 'post');
+    f.setAttribute('action', 'index.cgi');
+    f.setAttribute('target', '_parent');
+    document.body.appendChild(f);
+    f.submit();
+</script>
 
+EOP
+}
 
 print<<EOP;
         </div>
