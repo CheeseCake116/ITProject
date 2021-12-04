@@ -30,6 +30,8 @@ print<<EOP;
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+	<meta name="author" content="Team Movies">
+	<meta name="description" content="This page shows Disney movies, Pixar moview, and Marvel movies and help you find your favorite movies.">
     <title>Disney Movies</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -41,13 +43,16 @@ print<<EOP;
 </style>
 <body>
 <div class="container">
+	<a href="#" class="upbutton"></a>
     <header>
 		<h2><a href="disney.html" target="movieContent">Disney Movies</a></h2>
 		<nav>
 			<ul>
+				<li><a href="homepage.html" target="movieContent">Home</a></li>
 				<li><a href="disney.html" target="movieContent">Disney</a></li>
 				<li><a href="pixar.html" target="movieContent">Pixar</a></li>
 				<li><a href="marvel.html" target="movieContent">Marvel</a></li>
+				<li><a href="sitemap.html" target="movieContent">SiteMap</a></li>
 				<li><a href="aboutUs.html" target="movieContent">About us</a></li>
 			</ul>
 		</nav>
@@ -57,23 +62,30 @@ print<<EOP;
 EOP
 
 if (exists($account{$userid}) && $password eq $account{$userid}) {
-	print "<h2 id='username' class='fn-font'>$names{$userid}</h2>";
-	print "<a href='index.html' target='_parent' style='margin: auto 0;'><p class='fn-font login-text'>로그아웃</p></a>";
-	print "</div>";
-	print "</header>";
-	print "<iframe name='movieContent' src='disney.html' width='1920px' height='1200px' frameborder='0' scrolling='no'></iframe>";
+print<<EOP;
+<h2 id='username' class='fn-font'>$names{$userid}</h2>
+<a href='index.html' target='_parent' style='margin: auto 10px auto 0;'><p class='fn-font login-text'>로그아웃</p></a>
+</div>
+</header>
+<iframe id='child-iframe' name='movieContent' src='homepage.html' frameborder='0' scrolling='no'></iframe>
+EOP
 } elsif (!(exists($account{$userid}))) {
 	print "</div>";
 	print "</header>";
-	print "<iframe name='movieContent' src='signin_iderror.html' width='1920px' height='1200px' frameborder='0' scrolling='no'></iframe>";
+	print "<iframe id='child-iframe' name='movieContent' src='signin_iderror.html' frameborder='0' scrolling='no'></iframe>";
 } else {
 	print "</div>";
 	print "</header>";
-	print "<iframe name='movieContent' src='signin_pwerror.html' width='1920px' height='1200px' frameborder='0' scrolling='no'></iframe>";
+	print "<iframe id='child-iframe' name='movieContent' src='signin_pwerror.html' frameborder='0' scrolling='no'></iframe>";
 }
 
 print<<EOP;
-	
+	<script>
+		let iframe = document.getElementById("child-iframe");
+		iframe.addEventListener('load', function() {
+			iframe.style.height = iframe.contentDocument.body.scrollHeight + 'px';
+		});
+	</script>
 </div>
 </body>
 </html>

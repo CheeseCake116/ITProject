@@ -33,6 +33,8 @@ print<<EOP;
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+	<meta name="author" content="Team Movies">
+	<meta name="description" content="This page shows Disney movies, Pixar moview, and Marvel movies and help you find your favorite movies.">
     <title>디즈니 영화</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">

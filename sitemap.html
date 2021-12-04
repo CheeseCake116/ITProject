@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+	<meta name="author" content="Team Movies">
+	<meta name="description" content="This page shows Disney movies, Pixar moview, and Marvel movies and help you find your favorite movies.">f
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<style>
+	section {
+		background-image: url(images/sitemap-2.png);
+		background-repeat: no-repeat;
+        background-position: center;
+		width: 100%;
+		height: 250px;
+	}
+	th {
+		min-width: 150px;
+		font-size: 18px;
+		text-align: left;
+	}
+	td {
+		vertical-align: text-bottom;
+	}
+</style>
+<body>
+
+	<!--헤더이미지 최신상영작-->
+	<section>
+		<div style="font-size: 1.5em; width: 100%; display: flex;">
+			<p style="text-align: center; font-size: 1.8em; padding: 94px 0px; width: 100%;">
+				사이트맵
+			</p>
+		</div>
+
+		<!--헤더이미지 아래 영화들 목록-->
+		<article>
+			<br>
+			<br>
+			<div align="center">
+				<table border="0" cellspacing="30px">
+					<tr>
+						<th>홈</th>
+						<th>디즈니 영화</th>
+						<th>픽사 영화</th>
+						<th>마블 영화</th>
+						<th>안내</th>
+						<th>계정 관리</th>
+					</tr>
+					<tr>
+						<td>홈페이지</td>
+						<td>
+							<ul>
+								<li><a href="disney_detail.cgi?index=1">엔칸토</a></li>
+								<li><a href="disney_detail.cgi?index=2">크루엘라</a></li>
+								<li><a href="disney_detail.cgi?index=3">라야와 마지막 드래곤</a></li>
+								<li><a href="disney_detail.cgi?index=4">뮬란</a></li>
+								<li><a href="disney_detail.cgi?index=5">겨울왕국 2</a></li>
+								<li><a href="disney_detail.cgi?index=6">말레피센트 2</a></li>
+							</ul>
+						</td>
+						<td>
+							<ul>
+								<li><a href="pixar_detail.cgi?index=1">루카</a></li>
+								<li><a href="pixar_detail.cgi?index=2">소울</a></li>
+								<li><a href="pixar_detail.cgi?index=3">온워드</a></li>
+								<li><a href="pixar_detail.cgi?index=4">토이 스토리 4</a></li>
+								<li><a href="pixar_detail.cgi?index=5">인크레더블 2</a></li>
+								<li><a href="pixar_detail.cgi?index=6">코코</a></li>
+							</ul>
+						</td>
+						<td>
+							<ul>
+								<li><a href="marvel_detail.cgi?index=1">이터널스</a></li>
+								<li><a href="marvel_detail.cgi?index=2">베놈 2</a></li>
+								<li><a href="marvel_detail.cgi?index=3">샹치와 텐 링즈의 전설</a></li>
+								<li><a href="marvel_detail.cgi?index=4">블랙 위도우</a></li>
+								<li><a href="marvel_detail.cgi?index=5">스파이더맨: 파 프롬 홈</a></li>
+								<li><a href="marvel_detail.cgi?index=6">엑스맨: 다크 피닉스</a></li>
+							</ul>
+						</td>
+						<td>
+							<ul>
+								<li><a href="marvel_detail.cgi?index=1">사이트맵</a></li>
+								<li><a href="marvel_detail.cgi?index=1">About Us</a></li>
+							</ul>
+						</td>
+						<td>
+							<ul>
+								<script>
+									var username = window.parent.document.getElementById("username").innerHTML;
+
+									if (username) {
+										document.write('<li><a href="index.html" target="_parent">로그아웃</a></li>');
+									} else {
+										document.write('<li><a href="signin.html">로그인</a></li>');
+										document.write('<li><a href="signup.html">회원가입</a></li>');
+									}
+								</script>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</article>
+	</section>
+</body>
+</html>

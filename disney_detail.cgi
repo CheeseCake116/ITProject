@@ -4,10 +4,38 @@ use CGI qw(:standard -debug);
 use CGI::Carp qw(fatalsToBrowser);
 
 $index=param("index");
+$comment=param("comment");
+$username=param("username");
 $imgSrc="";
 $movieName="";
 $movieSrc="";
 $introText="";
+$file = "disney_comment.out";
+@comments=();
+
+if ($comment) {
+    open(OUT, ">>$file") || die "can't write to the $file";
+    print OUT "$index\n$username\n$comment\n";
+    close(OUT);
+}
+
+open(IN, "$file") || die "can't read the $file";
+@comments=<IN>;
+close(IN);
+
+$commentCnt = @comments;
+$allcomment="";
+for ($i=0; $i<$commentCnt; $i+=3) {
+	$tempindex = $comments[$i];
+	chomp $tempindex;
+	$tempusername = $comments[$i+1];
+	chomp $tempusername;
+	$tempcomment = $comments[$i+2];
+	chomp $tempcomment;
+    if ($index eq $tempindex) {
+        $allcomment = $allcomment."<p style='color: grey;'>작성자 : $tempusername</p>$tempcomment<br><br>";
+    }
+}
 
 if ($index eq "1") {
     $imgSrc="images/disney_encanto.jpg";
@@ -32,21 +60,23 @@ if ($index eq "1") {
  그게 불편한 인간들도 있겠지만 모두의 비위를 맞출 수는 없잖아?<br>
  그러다 보니 결국, 학교를 계속 다닐 수가 없었지<br>
  <br>
- 우여곡절 런던에 오게 된 나, 에스텔라는 재스퍼와 호레이스를 운명처럼 만났고<br>
- 나의 뛰어난 패션 감각을 이용해 완벽한 변장과 빠른 손놀림으로 런던 거리를 싹쓸이 했어<br>
+ 우여곡절 런던에 오게 된 나, 에스텔라는 재스퍼와 호레이스를 운명처럼<br>
+ 만났고 나의 뛰어난 패션 감각을 이용해 완벽한 변장과 빠른 손놀림으로<br>
+ 런던 거리를 싹쓸이 했어<br>
  <br>
- 도둑질이 지겹게 느껴질 때쯤, 꿈에 그리던 리버티 백화점에 낙하산(?)으로 들어가게 됐어<br>
- 거리를 떠돌았지만 패션을 향한 나의 열정만큼은 언제나 진심이었거든<br>
+ 도둑질이 지겹게 느껴질 때쯤, 꿈에 그리던 리버티 백화점에 낙하산(?)으로<br>
+ 들어가게 됐어. 거리를 떠돌았지만 패션을 향한 나의 열정만큼은 언제나<br>
+ 진심이었거든<br>
  <br>
  근데 이게 뭐야, 옷에는 손도 못 대보고 하루 종일 바닥 청소라니<br>
- 인내심에 한계를 느끼고 있을 때, 런던 패션계를 꽉 쥐고 있는 남작 부인이 나타났어<br>
- 천재는 천재를 알아보는 법! 난 남작 부인의 브랜드 디자이너로 들어가게 되었지<br>
+ 인내심에 한계를 느끼고 있을 때, 런던 패션계를 꽉 쥐고 있는 남작 부인이<br>
+ 나타났어. 천재는 천재를 알아보는 법! 난 남작 부인의 브랜드 디자이너로<br>
+ 들어가게 되었지<br>
  <br>
- 꿈을 이룰 것 같았던 순간도 잠시, 세상에 남작 부인이 ‘그런 사람’이었을 줄이야…<br>
+ 꿈을 이룰 것 같았던 순간도 잠시, 세상에 남작 부인이 ‘그런 사람’이었을<br>
+ 줄이야…<br>
  <br>
- 그래서 난 내가 누군지 보여주기로 했어<br>
- 잘가, 에스텔라<br>
- <br>
+ 그래서 난 내가 누군지 보여주기로 했어. 잘가, 에스텔라<br>
  난 이제 크루엘라야!</p>";
 } elsif ($index eq "3") {
     $imgSrc="images/disney_raya.jpg";
@@ -114,14 +144,15 @@ print<<EOP;
 </head>
 <body>
 	<section>
-
-<div style="background-color: black; width: 100%; height: 600px;">
-    <div style="font-size: 1.5em; display: flex; align-items: center; justify-content: space-between;">
-        <div style="padding: 30px 100px;">
-            <table cellspacing="20">
+        <div style="background-color: black; width: 100%; height: 540px;">
+            <table cellspacing="20" style="font-size: 25px; margin: auto;">
                 <tr>
                     <td>
                         <img src=$imgSrc width="300"/>
+                    </td>
+                    <td width="50px"></td>
+                    <td rowspan="2">
+                        <iframe width="640" height="480" src=$movieSrc title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </td>
                 </tr>
                 <tr>
@@ -130,22 +161,48 @@ print<<EOP;
                             $movieName
                         </p>
                     </th>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table>
         </div>
-        <div style="font-size: 1.5em; padding: 30px 20%;">
-            <iframe width="640" height="480" src=$movieSrc title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </div>
-</div>
-<article>
-    <div style="padding: 50px;">
-        <h2>줄거리</h2>
-        <br>
-        $introText
-    </div>
-</article>
+        <article style="display: flex; width: 1000px; margin: auto; min-height: 700px;">
+            <div style="padding: 50px; width:600px;">
+                <h2>줄거리</h2>
+                <br>
+                $introText
+            </div>
+            <div style="padding-top: 50px; width:400px;">
+                <h2>댓글</h2>
+                <br>
+                <script>
+                    var username = window.parent.document.getElementById("username").innerHTML;
 
+                    if (username) {
+                        document.write('<form style="display: flex;" action="disney_detail.cgi" method="post">');
+                        document.write('<input type=hidden name=index value="$index">');
+                        document.write('<input type=hidden name=username value="test" id="post_username">');
+                        document.write('<input type=text name=comment style="width: 300px;" placeholder="댓글을 입력해 주세요" class="comment-input"></input>');
+                        document.write('<input type=submit value="확인" class="comment-button"></input>');
+                        document.write('</form>');
+                    } else {
+                        document.write('<form style="display: flex;" action="disney_detail.cgi" method="post">');
+                        document.write('<input type=hidden name=index value="$index" disabled>');
+                        document.write('<input type=hidden name=username value="test" id="post_username" disabled>');
+                        document.write('<input type=text name=comment style="width: 300px;" placeholder="로그인이 필요합니다" class="comment-input" disabled></input>');
+                        document.write('<input type=submit value="확인" class="comment-button" disabled></input>');
+                        document.write('</form>');
+                    }
+                    
+                    var Myelement = document.getElementById("post_username");
+                    Myelement.value = username;
+                </script>
+                <br>
+                <div style="overflow:auto; height: 470px; word-break: break-all;">
+                    <p>$allcomment</p>
+                </div>
+            </div>
+        </article>
 	</section>
 </body>
 </html>

@@ -4,10 +4,38 @@ use CGI qw(:standard -debug);
 use CGI::Carp qw(fatalsToBrowser);
 
 $index=param("index");
+$comment=param("comment");
+$username=param("username");
 $imgSrc="";
 $movieName="";
 $movieSrc="";
 $introText="";
+$file = "marvel_comment.out";
+@comments=();
+
+if ($comment) {
+    open(OUT, ">>$file") || die "can't write to the $file";
+    print OUT "$index\n$username\n$comment\n";
+    close(OUT);
+}
+
+open(IN, "$file") || die "can't read the $file";
+@comments=<IN>;
+close(IN);
+
+$commentCnt = @comments;
+$allcomment="";
+for ($i=0; $i<$commentCnt; $i+=3) {
+	$tempindex = $comments[$i];
+	chomp $tempindex;
+	$tempusername = $comments[$i+1];
+	chomp $tempusername;
+	$tempcomment = $comments[$i+2];
+	chomp $tempcomment;
+    if ($index eq $tempindex) {
+        $allcomment = $allcomment."<p style='color: grey;'>작성자 : $tempusername</p>$tempcomment<br><br>";
+    }
+}
 
 if ($index eq "1") {
     $imgSrc="images/marvel_eternals.jpg";
@@ -87,19 +115,22 @@ print<<EOP;
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+	<meta name="author" content="Team Movies">
+	<meta name="description" content="This page shows Disney movies, Pixar moview, and Marvel movies and help you find your favorite movies.">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
 	<section>
-
-<div style="background-color: black; width: 100%; height: 600px;">
-    <div style="font-size: 1.5em; display: flex; align-items: center; justify-content: space-between;">
-        <div style="padding: 30px 100px;">
-            <table cellspacing="20">
+        <div style="background-color: black; width: 100%; height: 540px;">
+            <table cellspacing="20" style="font-size: 25px; margin: auto;">
                 <tr>
                     <td>
                         <img src=$imgSrc width="300"/>
+                    </td>
+                    <td width="50px"></td>
+                    <td rowspan="2">
+                        <iframe width="640" height="480" src=$movieSrc title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </td>
                 </tr>
                 <tr>
@@ -108,22 +139,48 @@ print<<EOP;
                             $movieName
                         </p>
                     </th>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table>
         </div>
-        <div style="font-size: 1.5em; padding: 30px 20%;">
-            <iframe width="640" height="480" src=$movieSrc title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </div>
-</div>
-<article>
-    <div style="padding: 50px;">
-        <h2>줄거리</h2>
-        <br>
-        $introText
-    </div>
-</article>
+        <article style="display: flex; width: 1000px; margin: auto; min-height: 700px;">
+            <div style="padding: 50px; width:600px;">
+                <h2>줄거리</h2>
+                <br>
+                $introText
+            </div>
+            <div style="padding-top: 50px; width:400px;">
+                <h2>댓글</h2>
+                <br>
+                <script>
+                    var username = window.parent.document.getElementById("username").innerHTML;
 
+                    if (username) {
+                        document.write('<form style="display: flex;" action="marvel_detail.cgi" method="post">');
+                        document.write('<input type=hidden name=index value="$index">');
+                        document.write('<input type=hidden name=username value="test" id="post_username">');
+                        document.write('<input type=text name=comment style="width: 300px;" placeholder="댓글을 입력해 주세요" class="comment-input"></input>');
+                        document.write('<input type=submit value="확인" class="comment-button"></input>');
+                        document.write('</form>');
+                    } else {
+                        document.write('<form style="display: flex;" action="marvel_detail.cgi" method="post">');
+                        document.write('<input type=hidden name=index value="$index" disabled>');
+                        document.write('<input type=hidden name=username value="test" id="post_username" disabled>');
+                        document.write('<input type=text name=comment style="width: 300px;" placeholder="로그인이 필요합니다" class="comment-input" disabled></input>');
+                        document.write('<input type=submit value="확인" class="comment-button" disabled></input>');
+                        document.write('</form>');
+                    }
+                    
+                    var Myelement = document.getElementById("post_username");
+                    Myelement.value = username;
+                </script>
+                <br>
+                <div style="overflow:auto; height: 470px; word-break: break-all;">
+                    <p>$allcomment</p>
+                </div>
+            </div>
+        </article>
 	</section>
 </body>
 </html>
