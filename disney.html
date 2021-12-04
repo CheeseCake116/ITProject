@@ -9,8 +9,9 @@
 	section {
 		background-image: url(images/mainImage3_1.png);
 		background-repeat: no-repeat;
-        background-position: 50% 0%;
+        background-position: center;
 		width: 100%;
+		height: 250px;
 	}
 </style>
 <body>
@@ -18,61 +19,49 @@
 	<!--헤더이미지 최신상영작-->
 	<section>
 		<div style="font-size: 1.5em; width: 100%; display: flex;">
-			<div style="width: 50%;">
-				<p style="text-align: center; font-size: 1.5em; padding: 150px 0px ;">
-					디즈니<br/>최신상영작
-				</p>
-			</div>
-			<div style="width: 50%;">
-				<table cellspacing="20">
-					<tr>
-						<td>
-							<a href="disney_detail.html"><img src="images/disney_encanto.jpg" width="200"/></a>
-						</td>
-						<td>
-							<img src="images/disney_cruella.jpg" width="200"/>
-						</td>
-						<td>
-							<img src="images/disney_raya.jpg" width="200"/>
-						</td>
-					</tr>
-					<tr>
-						<th>
-							<p style="font-size: 1.0em;">
-								엔칸토
-							</p>
-						</th>
-						<th>
-							<p tyle="font-size: 1.0em;">
-								크루엘라
-							</p>
-						</th>
-						<th>
-							<p tyle="font-size: 1.0em;">
-								라야와<br>마지막 드래곤
-							</p>
-						</th>
-					</tr>
-				</table>
-			</div>
+			<p style="text-align: center; font-size: 1.8em; padding: 94px 0px; width: 100%;">
+				디즈니 최신상영작
+			</p>
 		</div>
 
 		<!--헤더이미지 아래 영화들 목록-->
 		<article>
 			<br>
-			<h2 align="center" style="padding: 50px;">디즈니 영화 목록</h2>
 			<br>
 			<div align="center">
 				<table border="0" cellspacing="10px">
 					<tr>
 						<td width="200px">
-							<img src="images/disney_mulan.jpg"  width="200"/>
+							<a href="disney_detail.cgi?index=1"><img src="images/disney_encanto.jpg" width="200"/></a>
 						</td>
 						<td width="200px">
-							<img src="images/disney_frozen2.jpg"  width="200"/>
+							<a href="disney_detail.cgi?index=2"><img src="images/disney_cruella.jpg" width="200"/></a>
 						</td>
 						<td width="200px">
-							<img src="images/disney_ladyAndTheTramp.jpg"  width="200"/>
+							<a href="disney_detail.cgi?index=3"><img src="images/disney_raya.jpg" width="200"/></a>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" height="30">
+							<p>엔칸토</p>
+						</td>
+						<td align="center" height="30">
+							<p>크루엘라</p>
+						</td>
+						<td align="center" height="30">
+							<p>라야와 마지막 드래곤</p>
+						</td>
+					</tr>
+					<tr height="50px"></tr>
+					<tr>
+						<td>
+							<a href="disney_detail.cgi?index=4"><img src="images/disney_mulan.jpg"  width="200"/></a>
+						</td>
+						<td>
+							<a href="disney_detail.cgi?index=5"><img src="images/disney_frozen2.jpg"  width="200"/></a>
+						</td>
+						<td>
+							<a href="disney_detail.cgi?index=6"><img src="images/disney_maleficent2.jpg"  width="200"/></a>
 						</td>
 					</tr>
 					<tr>
@@ -83,7 +72,7 @@
 							<p>겨울왕국 2</p>
 						</td>
 						<td align="center" height="30">
-							<p>레이디와 트램프</p>
+							<p>말레피센트 2</p>
 						</td>
 					</tr>
 				</table>

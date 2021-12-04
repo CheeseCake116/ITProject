@@ -2,7 +2,6 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>픽사</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
@@ -10,8 +9,9 @@
 	section {
 		background-image: url(images/mainImage4_1.png);
 		background-repeat: no-repeat;
-        background-position: 50% 0%;
+        background-position: center;
 		width: 100%;
+		height: 250px;
 	}
 </style>
 <body>
@@ -19,61 +19,49 @@
 	<!--헤더이미지 최신상영작-->
     <section>
 		<div style="font-size: 1.5em; width: 100%; display: flex;">
-			<div style="width: 50%;">
-				<p style="text-align: center; font-size: 1.5em; padding: 150px 0px ;">
-					픽사<br/>최신상영작
-				</p>
-			</div>
-			<div style="width: 50%;">
-				<table cellspacing="20">
-					<tr>
-						<td>
-							<a href="pixar_detail.html"><img src="images/pixar_ruka.jpg" width="200"/></a>
-						</td>
-						<td>
-							<img src="images/pixar_soul.jpg" width="200"/>
-						</td>
-						<td>
-							<img src="images/pixar_onward.jpg" width="200"/>
-						</td>
-					</tr>
-					<tr>
-						<th>
-							<p style="font-size: 1.0em;">
-								루카
-							</p>
-						</th>
-						<th>
-							<p tyle="font-size: 1.0em;">
-								소울
-							</p>
-						</th>
-						<th>
-							<p style="font-size: 1.0em;">
-								온워드
-							</p>
-						</th>
-					</tr>
-				</table>
-			</div>
+			<p style="text-align: center; font-size: 1.8em; padding: 94px 0px; width: 100%;">
+				픽사 최신상영작
+			</p>
 		</div>
 
 		<!--헤더이미지 아래 영화들 목록-->
 		<article>
 			<br>
-			<h2 align="center" style="padding: 50px;">픽사 영화 목록</h2>
 			<br>
 			<div align="center">
 				<table border="0" cellspacing="10px">
 					<tr>
 						<td width="200px">
-							<img src="images/pixar_toystory4.jpg"  width="200"/>
+							<a href="pixar_detail.cgi?index=1"><img src="images/pixar_ruka.jpg" width="200"/></a>
 						</td>
 						<td width="200px">
-							<img src="images/pixar_incredibles2.jpg"  width="200"/>
+							<a href="pixar_detail.cgi?index=2"><img src="images/pixar_soul.jpg" width="200"/></a>
 						</td>
 						<td width="200px">
-							<img src="images/pixar_coco.jpg"  width="200"/>
+							<a href="pixar_detail.cgi?index=3"><img src="images/pixar_onward.jpg" width="200"/></a>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" height="30">
+							<p>루카</p>
+						</td>
+						<td align="center" height="30">
+							<p>소울</p>
+						</td>
+						<td align="center" height="30">
+							<p>온워드</p>
+						</td>
+					</tr>
+					<tr height="50px"></tr>
+					<tr>
+						<td>
+							<a href="pixar_detail.cgi?index=4"><img src="images/pixar_toystory4.jpg"  width="200"/></a>
+						</td>
+						<td>
+							<a href="pixar_detail.cgi?index=5"><img src="images/pixar_incredibles2.jpg"  width="200"/></a>
+						</td>
+						<td>
+							<a href="pixar_detail.cgi?index=6"><img src="images/pixar_coco.jpg"  width="200"/></a>
 						</td>
 					</tr>
 					<tr>

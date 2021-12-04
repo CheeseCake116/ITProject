@@ -14,11 +14,11 @@ $linecnt = @lines;
 %account = ();
 %names = ();
 for ($i=0; $i<$linecnt; $i+=3) {
-	$id = @lines[i];
+	$id = $lines[$i];
 	chomp $id;
-	$pwd = @lines[i+1];
+	$pwd = $lines[$i+1];
 	chomp $pwd;
-	$name = @lines[i+2];
+	$name = $lines[$i+2];
 	chomp $name;
 	$account{$id} = $pwd;
 	$names{$id} = $name;
@@ -57,8 +57,8 @@ print<<EOP;
 EOP
 
 if (exists($account{$userid}) && $password eq $account{$userid}) {
-	print "<h2 id='username'>$userid</h2>";
-	print "<a href='index.html' target='_parent'><p class='fn-font login-text'>로그아웃</p></a>";
+	print "<h2 id='username' class='fn-font'>$names{$userid}</h2>";
+	print "<a href='index.html' target='_parent' style='margin: auto 0;'><p class='fn-font login-text'>로그아웃</p></a>";
 	print "</div>";
 	print "</header>";
 	print "<iframe name='movieContent' src='disney.html' width='1920px' height='1200px' frameborder='0' scrolling='no'></iframe>";
